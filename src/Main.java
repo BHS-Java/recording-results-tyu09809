@@ -5,5 +5,6 @@ public class Main implements Spec{
         p1.getName();
         p1.getAge();
         p1.getHeight();
+        
     }
 }
