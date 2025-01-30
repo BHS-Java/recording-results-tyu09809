@@ -4,37 +4,57 @@ public class Player implements Person{
     private String name;
     private String height;
     private String age;
+    private Results results;
+
+    public Player() {
+        this.results = new ResultsImpl();
+    }
+
+     @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getName() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("What is your name?");
-        String name = scan.nextLine();
-        System.out.println(name);
         return this.name;
     }
 
     @Override
-    public String getHeight(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("What is your height?");
-        String height = scan.nextLine();
-        System.out.println(height);
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    @Override
+    public String getHeight() {
         return this.height;
     }
+
+    @Override
+    public void setAge(String age) {
+        this.age = age;
+    }
+
     @Override
     public String getAge() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("What is your age?");
-        String age = scan.nextLine();
-        System.out.println(age);
         return this.age;
     }
 
     @Override
     public Results getResults() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.results;
     }
-    
+
+    public void inputDetails() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("name pls ");
+        this.name = scanner.nextLine();
+
+        System.out.print("height pls ");
+        this.height = scanner.nextLine();
+
+        System.out.print("age pls ");
+        this.age = scanner.nextLine();
+  }
 
 }
