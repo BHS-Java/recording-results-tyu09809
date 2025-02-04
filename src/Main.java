@@ -1,40 +1,28 @@
 import java.util.Scanner;
-public class Main implements Spec{
+
+public class Main implements Spec {
     Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args){
-        System.out.println();
-        Main main = new Main();
-        Player player = main.makePerson("Name pls");
-        int age = main.askNumber("What age");
-        String height = main.askString("How tall");
+
+    public Player makePerson(String question) {
+        System.out.println(question);
+        String name = scanner.nextLine();
+        return new Player(name);
     }
 
-    public String askString(String question){
+    public String askString(String question) {
         System.out.println(question);
-        String answer = scanner.nextLine();
-        return answer;
+        return scanner.nextLine();
     }
 
-    public int askNumber(String question){
+    public int askNumber(String question) {
         System.out.println(question);
         String answer = scanner.nextLine();
-        int numberAnswer = Integer.parseInt(answer);
-        return numberAnswer;
+        return Integer.parseInt(answer);
     }
-    public Results getResults(Game guessingOrBetter){
-        return getResults(guessingOrBetter);
-    }
-    
-    public Player makePerson(String question){
-        System.out.println(question);
-        String answer = scanner.nextLine();
-        return new Player(answer);
-    }
-
-    public void addResults(Player player){}
 
     @Override
     public void addResults(Person player) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    public static void main(String[] args) {}
 }

@@ -29,6 +29,19 @@ public class Player implements Person {
 
     @Override
     public Results getResults() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new PlayerResults(this);
+    }
+
+    private class PlayerResults implements Results {
+        private Player player;
+
+        public PlayerResults(Player player) {
+            this.player = player;
+        }
+
+        @Override
+        public String getSummary() {
+            return "Player: " + player.getName() + ", Age: " + player.getAge() + ", Height: " + player.getHeight();
+        }
     }
 }
