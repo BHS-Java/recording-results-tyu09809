@@ -8,8 +8,27 @@ public class Game implements Results {
         this.players = new ArrayList<>();
     }
 
+    public Game(List<Person> players) {
+        this.players = players;
+    }
+
     public void addPlayer(Person player) {
         players.add(player);
+    }
+
+    public void loadPlayers(String filePath) {
+        PlayerLoader loader = new PlayerLoader();
+        List<Person> loadedPlayers = loader.loadPlayers(filePath);
+        players.addAll(loadedPlayers);
+    }
+
+    public void selectPlayer(int index) {
+        if (index >= 0 && index < players.size()) {
+            Person selectedPlayer = players.get(index);
+            System.out.println("Selected Player: " + selectedPlayer.getName());
+        } else {
+            System.out.println("Invalid player index.");
+        }
     }
 
     @Override
@@ -25,19 +44,15 @@ public class Game implements Results {
         Main main = new Main();
         Game game = new Game();
 
-        System.out.println("Player 1:");
-        Player player1 = main.makePerson("Name pls");
-        player1.setAge(String.valueOf(main.askNumber("What age")));
-        player1.setHeight(main.askString("How tall"));
-        game.addPlayer(player1);
+        game.loadPlayers("players.csv");
 
-        System.out.println("Player 2:");
-        Player player2 = main.makePerson("Name pls");
-        player2.setAge(String.valueOf(main.askNumber("What age")));
-        player2.setHeight(main.askString("How tall"));
-        game.addPlayer(player2);
+        game.selectPlayer(0); 
 
-        System.out.println("Game Results:");
+        StairDrawer stairDrawer = new StairDrawer();
+        String direction = main.askString("gimme direction (up, down, upside down, upside down left):");
+        stairDrawer.drawStairs(direction);
+
+        System.out.println("Game Results fam");
         System.out.println(game.getSummary());
     }
 }
